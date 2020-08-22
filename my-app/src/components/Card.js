@@ -2,19 +2,20 @@ import React from "react";
 import styled from "@emotion/styled";
 
 const CardWrapper = styled.div`
-  width: 40%;
+  box-sizing: border-box;
+  width: 30%;
   border: ${(props) =>
     props.selected ? "2px dashed purple" : "1px solid black"};
   margin: 1rem;
   background-color: lavender;
   height: auto;
+  padding: 1rem;
 `;
 const Header = styled.h4`
-  margin: 10px;
   color: purple;
 `;
 
-const Card = ({ onClick, item, selected }) => {
+const Card = ({ onClick, item, selected, index }) => {
   const { name, bonus, built_with, combos } = item;
 
   const renderCombos = (arr) => {
@@ -24,7 +25,7 @@ const Card = ({ onClick, item, selected }) => {
     return comboArray;
   };
   return (
-    <CardWrapper onClick={() => onClick(name)} selected={selected}>
+    <CardWrapper key={index} onClick={() => onClick(name)} selected={selected}>
       <Header>{name}</Header>
       <Header>{bonus}</Header>
       <Header>Combinations:</Header>

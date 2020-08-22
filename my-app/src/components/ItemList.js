@@ -6,7 +6,10 @@ import styled from '@emotion/styled'
 const CharactersWrapper =  styled.div`
     box-sizing: border-box;
     display: flex;
-    flex-direction: row-wrap;
+    flex-direction: row;
+    width: 100%;
+    flex-wrap: wrap;
+    height: 100%;
 `
 const ItemList = ({ items }) => {
     const [selectedItem, setSelectedItem] = useState('')
@@ -17,7 +20,7 @@ const ItemList = ({ items }) => {
 
     return (
         <CharactersWrapper>
-            {items.data.map(item => <Card selected={selectedItem === item.name} onClick={selectItem} item={item} />)}
+            {items.data.map((item, index) => <Card key={index} selected={selectedItem === item.name} onClick={selectItem} item={item} />)}
         </CharactersWrapper>
     )
 }
